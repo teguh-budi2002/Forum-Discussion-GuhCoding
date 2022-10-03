@@ -1,0 +1,31 @@
+  nav {
+      position: fixed;
+      top: 0;
+      z-index: 9999;
+      width: 100%;
+      background-image: url('/img/navbar-img.webp');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-position: top;
+      -webkit-transform: translate3d(0, 0, 1px);
+      -webkit-backface-visibility: hidden;
+  }
+
+  .ham-menu {
+      width: 30px;
+      height: 5px;
+      margin: 4px 0;
+      background-color: white;
+  }
+
+  .menu-sidebar {
+      position: fixed;
+      z-index: 9999;
+      width: 0px;
+      overflow-x: hidden;
+      transition: width 0.5s;
+      background-image: url('/img/navbar-img.webp');
+      background-repeat: no-repeat;
+      background-position: bottom center;
+  }

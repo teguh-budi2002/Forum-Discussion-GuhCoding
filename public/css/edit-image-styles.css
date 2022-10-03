@@ -1,0 +1,67 @@
+.dragBox {
+    width: 98%;
+    height: auto;
+    position: absolute;
+    top: 0%;
+    text-align: center;
+    font-weight: bold;
+    line-height: 95px;
+    color: #999;
+    border: 2px dashed #ccc;
+    /* display: inline-block; */
+    transition: transform 0.3s;
+}
+
+.draging {
+    transform: scale(1.1);
+}
+
+input[type="file"] {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    top: 0;
+    left: 0;
+}
+
+.box {
+    position: absolute;
+    top: 5%;
+}
+
+#preview {
+    margin-top: 15%;
+    width: 200px;
+    height: 200px;
+}
+
+.button-upload {
+    position: absolute;
+    right: 5%;
+    bottom: 5%;
+}
+
+@media screen and (max-width: 768px) {
+    .dragBox {
+        width: 96%;
+    }
+
+    #preview {
+         margin-top: 20%;
+         width: 200px;
+         height: 200px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .dragBox {
+        width: 95%;
+    }
+
+    #preview {
+         margin-top: 40%;
+         width: 100px;
+         height: 100px;
+    }
+}

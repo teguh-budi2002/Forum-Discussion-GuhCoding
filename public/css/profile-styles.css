@@ -1,0 +1,47 @@
+.wrapper-img {
+    position: relative;
+}
+
+.del-btn {
+    position: absolute;
+    left: 17%;
+    right: 50%;
+    bottom: 30%;
+    z-index: 2;
+    width: 70%;
+    padding: 2px;
+    border-radius: 2px;
+    background-color: rgba(251, 80, 80, 0.363);
+    outline: 1px solid rgb(251, 80, 80);
+    color: red;
+    opacity: 0;
+}
+
+.wrapper-img:hover .del-btn {
+    opacity: 1;
+}
+
+.overlay {
+    position: absolute;
+    bottom: 0%;
+    left: 0;
+    right: 0;
+    height: 176px;
+    width: 100%;
+    border-radius: 4px;
+    opacity: 0;
+    transition: .5s ease;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.wrapper-img:hover .overlay {
+    opacity: 1;
+}
+
+@media  screen and (max-width: 768px) {
+    .del-btn {
+        opacity: 1;
+        bottom: 8%;
+        color: rgba(255, 87, 87, 0.856);
+    }
+}
