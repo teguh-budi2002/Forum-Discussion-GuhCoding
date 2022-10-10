@@ -15,6 +15,10 @@ class ForumController extends Controller
         return view('forum.home-forum');
     }
 
+    public function viewRules() {
+        return view('forum.rules');
+    }
+
     public function createQuestion() {
         return view('forum.question');
     }

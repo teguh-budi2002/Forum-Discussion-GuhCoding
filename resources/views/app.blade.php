@@ -36,12 +36,12 @@
     <link rel="stylesheet" href="{{ asset('/css/master-styles.css') }}">
 </head>
 
-<body>
+<body class="bg-slate-600">
 
     {{-- navbar --}}
     @include('partial.nav')
 
-    <div class="w-full" id="modal-regis">
+    <div class="w-full h-full" id="modal-regis">
         @include('notify::components.notify')
         <x:notify-messages />
         {{-- Main --}}

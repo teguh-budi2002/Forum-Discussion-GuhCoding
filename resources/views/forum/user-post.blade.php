@@ -1,6 +1,6 @@
 @extends('app')
 @section('content')
-<div class="w-full h-full bg-gray-100">
+<div class="w-full h-full">
     <div id="user-post">
         <user-post :get-post="{{ $post }}"></user-post>
         <modal-forum></modal-forum>

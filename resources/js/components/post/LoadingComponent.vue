@@ -1,5 +1,5 @@
 <template>
-    <div class="w-full h-full bg-gray-100">
+    <div class="w-full h-full">
         <div class="flex justify-center md:px-0 px-3">
             <div class="w-full md:w-4/5 h-full mt-28 mb-10 shadow-md shadow-gray-400 bg-white rounded-md p-2">
                 <div class="user-auth mt-2">

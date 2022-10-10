@@ -16,6 +16,9 @@ class LoginController extends Controller
         $v = $req->validate([
             'name' => 'required',
             'password' => 'required'
+        ], [
+            'name.required' => 'Username Tidak Boleh Kosong.',
+            'password.required' => 'Password Tidak Boleh Kosong.',
         ]);
 
         $user = Auth::getProvider()->retrieveByCredentials($v);

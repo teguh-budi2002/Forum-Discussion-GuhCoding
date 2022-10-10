@@ -14,24 +14,24 @@ use App\Http\Controllers\Api\GetPostController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\VerificationController;
-use App\Http\Controllers\Auth\ResetPasswordController;
+use App\Http\Controllers\Auth\ForgotPasswordController;
 
 Route::get('/', [HomeController::class, 'home'])->name('home.main')->middleware('home_guard');
 
 Route::prefix('auth')->middleware('home_guard')->group(function() {
     // Register
-    Route::get('register', [RegisterController::class, 'formReg']);
+    Route::get('register', [RegisterController::class, 'showRegistrationForm']);
     Route::post('send', [RegisterController::class, 'regisUser'])->name('send.regis');
     // Login
     Route::get('login/', [LoginController::class, 'showLoginForm'])->middleware('throttle:60,1')->name('login.form');
     Route::post('send-login', [LoginController::class, 'logProcess'])->name('send.login');
 
     //Forgot Password
-    Route::get('forgot-password', [ResetPasswordController::class, 'forgotForm']);
-    Route::post('submit-email', [ResetPasswordController::class, 'submitForgotPasswordForm'])->name('forget.password.post');
+    Route::get('forgot-password', [ForgotPasswordController::class, 'forgotForm']);
+    Route::post('submit-email', [ForgotPasswordController::class, 'submitForgotPasswordForm'])->name('forget.password.post');
 
-    Route::get('reset/password/{token}', [ResetPasswordController::class, 'resetForm']);
-    Route::post('reset/password/{email}', [ResetPasswordController::class, 'formSubmited']);
+    Route::get('reset/password/{token}', [ForgotPasswordController::class, 'resetForm']);
+    Route::post('reset/password/{email}', [ForgotPasswordController::class, 'formSubmited']);
 
     Route::get('/facebook', [SocialController::class, 'redirectToFB'])->middleware('throttle:60,1')->name('login.fb');
     Route::get('/facebook/callback', [SocialController::class, 'handleCallback']);
@@ -82,6 +82,9 @@ Route::middleware(['auth', 'verified', 'web'])->group(function() {
     Route::put('send-image/{id}', [ImageController::class,'uploadImage'])->name('send.image');
     Route::delete('delete-image/{id}', [ImageController::class,'deleteImage'])->name('del.image');
 
+    //Rules Forum
+    Route::get('/forum/rules', [ForumController::class, 'viewRules']);
+
     //Posting Question
     Route::post('/forum/send', [PostController::class, 'store'])->name('question.send');
     //Edit Question
@@ -89,5 +92,11 @@ Route::middleware(['auth', 'verified', 'web'])->group(function() {
 
     //User Comment
     Route::post('/comment/send', [CommentController::class, 'store'])->name('comment.send');
+
+    //Delete Comment
+    Route::delete('/comment/delete/{comment}', [CommentController::class, 'destroy'])->name('comment.delete');
+
+    //Delete Comment
+    Route::delete('/reply/delete/{id}', [CommentController::class, 'destroyReply'])->name('reply.delete');
 });
 

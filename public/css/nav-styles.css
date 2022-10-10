@@ -3,13 +3,13 @@
       top: 0;
       z-index: 9999;
       width: 100%;
-      background-image: url('/img/navbar-img.webp');
+      /* background-image: url('/img/navbar-img.webp');
       background-size: cover;
       background-repeat: no-repeat;
       background-attachment: fixed;
       background-position: top;
       -webkit-transform: translate3d(0, 0, 1px);
-      -webkit-backface-visibility: hidden;
+      -webkit-backface-visibility: hidden; */
   }
 
   .ham-menu {
@@ -25,7 +25,19 @@
       width: 0px;
       overflow-x: hidden;
       transition: width 0.5s;
-      background-image: url('/img/navbar-img.webp');
+      /* background-image: url('/img/navbar-img.webp');
       background-repeat: no-repeat;
-      background-position: bottom center;
+      background-position: bottom center; */
   }
+
+  .text__logo__main {
+    color: #fff;
+    text-shadow: 0 0 5px #fff,
+        0 0 10px #fff,
+        0 0 20px #fff,
+        0 0 40px #0ff,
+        0 0 80px #0ff,
+        0 0 90px #0ff,
+        0 0 100px #0ff,
+        0 0 150px #0ff;
+}

@@ -95,6 +95,20 @@ class CommentController extends Controller
      */
     public function destroy(Comment $comment)
     {
-        //
+        $isDeletedComment = Comment::find($comment->id);
+        $isDeletedComment->replies()->delete();
+        $isDeletedComment->delete();
+
+        notify()->success('Komen Berhasil Dihapus', 'COMMENT DELETED');
+        return redirect()->back();
+    }
+
+    public function destroyReply($id) {
+        //REPLIES DELETED
+        $isDeleted = Comment::where('id', $id)
+                            ->delete();
+
+        notify()->success('Komen Balasan Berhasil Dihapus', 'COMMENT DELETED');
+        return redirect()->back();
     }
 }

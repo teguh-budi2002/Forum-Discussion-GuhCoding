@@ -1,5 +1,5 @@
 <nav
-    class="p-5 {{ request()->route()->named('forum-home') ? '' : 'shadow-md shadow-blue-500' }} {{ request()->route()->named('home.main') ? 'hidden' : '' }}">
+    class="p-5 {{ Request::is('/') ? 'hidden' : '' }} bg-gradient-to-bl from-slate-700 to-slate-800 border-b-4 border-slate-500 shadow-md shadow-slate-300">
     <div class="flex justify-between items-center space-x-2">
         <div onclick="openMenu(event)" class="toggle-bar cursor-pointer text-lg text-white">
             <div class="ham-menu"></div>
@@ -7,15 +7,14 @@
             <div class="ham-menu"></div>
         </div>
         @if(Auth::check())
-        <div class="side-menu flex items-center space-x-3 bg-blue-500 rounded shadow-md shadow-blue-500 py-1 px-2">
+        <div
+            class="right-user-info flex items-center space-x-3 bg-blue-500 rounded shadow-md shadow-blue-500 py-1 px-2">
             <span class="text-white">{{ auth()->user()->name }}</span>
             @if (!is_null(auth()->user()->photo_profile))
-            <img src="{{ asset('/storage/' . auth()->user()->photo_profile) }}"
-                class="w-10 h-10 rounded-full"
+            <img src="{{ asset('/storage/' . auth()->user()->photo_profile) }}" class="w-10 h-10 rounded-full"
                 alt="{{auth()->user()->photo_profile}}">
             @elseif (!is_null(auth()->user()->photo_profile_fb))
-            <img src="{{ asset(auth()->user()->photo_profile_fb) }}"
-                class="w-10 h-10 rounded-full"
+            <img src="{{ asset(auth()->user()->photo_profile_fb) }}" class="w-10 h-10 rounded-full"
                 alt="{{auth()->user()->photo_profile_fb}}">
             @else
             <img src="{{ asset('/img/default-profile.webp') }}" alt="https://www.freepik.com/vectors/secret-agent"
@@ -25,20 +24,22 @@
         @endif
     </div>
 </nav>
-<div class="flex flex-col menu-sidebar h-full shadow-xl py-8">
-    <div class="flex flex-col px-4 justify-between">
+<div class="menu-sidebar h-full shadow-xl py-8 bg-gradient-to-t from-slate-700 to-slate-800">
+    <div class="px-4">
         <div class="flex justify-end font-bold text-white text-xl cursor-pointer" onclick="closeMenu(event)">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
                 stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
             </svg>
         </div>
-        <h2 class="text-3xl font-semibold text-center mb-5 text-white">GuhCoding</h2>
+        <div class="logo-nav-web font-semibold text-center mb-10">
+            <p class="text-3xl text__logo__main">Forum GuhCoding</p>
+        </div>
         <aside>
             <ul>
                 @guest
                 <li>
-                    <a href="/" class="flex items-center px-4 py-2 text-gray-700 bg-gray-100 rounded-md ">
+                    <a href="/" class="flex items-center px-4 py-2 mb-5 text-gray-700 bg-gray-100 rounded-md ">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
                             stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -79,6 +80,15 @@
                                 d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1" />
                         </svg>
                         <span class="mx-4 font-medium">Login</span>
+                    </a>
+                </li>
+                <li class="">
+                    <a href="{{ URL('/forum/rules') }}"
+                        class="flex items-center px-4 py-2 mt-2 text-gray-600 bg-gray-50 rounded-md hover:bg-gray-100 hover:scale-105 transition duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
+                        </svg>
+                        <span class="mx-4 font-medium">Rules</span>
                     </a>
                 </li>
                 @endguest
@@ -124,6 +134,15 @@
                                 d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
                         </svg>
                         <span class="mx-4 font-medium">My Post</span>
+                    </a>
+                </li>
+                <li class="">
+                    <a href="{{ URL('/forum/rules') }}"
+                        class="flex items-center px-4 py-2 mt-2 text-gray-600 bg-gray-50 rounded-md hover:bg-gray-100 hover:scale-105 transition duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
+                        </svg>
+                        <span class="mx-4 font-medium">Rules</span>
                     </a>
                 </li>
                 <li>

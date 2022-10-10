@@ -93,7 +93,7 @@
 
             judul.addEventListener("change", function () {
                 let preslug = judul.value;
-                preslug = preslug.replace(/ /g, "-");
+                preslug = preslug.replace(/ /g,"-");
                 slug.value = preslug.toLowerCase();
             });
         }

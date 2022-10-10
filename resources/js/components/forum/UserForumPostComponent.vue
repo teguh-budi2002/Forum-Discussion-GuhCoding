@@ -1,9 +1,9 @@
 <template>
     <div class="content lg:col-span-2">
-        <div class="w-full md:w-3/4 h-auto md:mx-auto bg-blue-200 outline outline-2 outline-blue-500 shadow-md shadow-blue-500 mt-5 rounded p-2"
+        <div class="wrapper_content w-full md:w-3/4 h-auto md:mx-auto mt-5 rounded p-2 shadow-md shadow-gray-300"
             v-for="post in posts" :key="post.id" v-memo="[post]">
             <div class="md:flex md:items-center md:justify-between flex-none">
-                <div class="left-item flex items-center space-x-3 text-blue-500">
+                <div class="left-item flex items-center space-x-3">
                     <img v-if="post.users.photo_profile !== null"
                         v-lazy="{ src: `/storage/${post.users.photo_profile}`, loading: 'https://i.postimg.cc/mk7RvYQk/home-forum.webp', error: 'https://i.postimg.cc/qvZq70jF/error-img-removebg-preview.webp'}"
                         class="w-10 h-10 rounded-full" :alt="post.users.photo_profile">
@@ -12,7 +12,7 @@
                         class="w-10 h-10 rounded-full" :alt="post.users.photo_profile_fb">
                     <img v-else :src="'/img/default-profile.webp'" class="w-12 h-12 rounded-full"
                         alt="https://www.freepik.com/vectors/secret-agent">
-                    <p class="font-semibold">{{ post.users.name }}</p>
+                    <p class="font-semibold text-blue-500">{{ post.users.name }}</p>
                 </div>
                 <div class="right-item lg:flex lg:items-center flex justify-center space-x-2">
                     <div class="tag-category md:block hidden text-blue-500">
@@ -29,7 +29,7 @@
                     </div>
                 </div>
             </div>
-            <div class="post-text mt-2 text-gray-700">
+            <div class="post-text mt-2">
                 <a :href="'/forum/postingan/' + post.slug" class="text-lg hover:text-blue-500">{{ post.judul }}</a>
             </div>
         </div>
@@ -42,7 +42,7 @@
             <template #complete>
                 <div class="flex justify-center mt-5">
                     <div
-                        class="cursor-pointer bg-blue-300 hover:bg-blue-200 outline outline-2 outline-blue-600 text-blue-700 hover:text-blue-500 p-2 rounded-md transition duration-300">
+                        class="cursor-pointer bg-gray-300 hover:bg-gray-200 outline outline-2 outline-gray-600 text-gray-700 hover:text-gray-500 p-2 rounded-md transition duration-300">
                         <p>Postingan Tidak Ditemukan</p>
                     </div>
                 </div>
@@ -68,7 +68,7 @@
             let posts = ref([])
             let page = 1
 
-            await new Promise((r) => setTimeout(r, 2000))
+            await new Promise((r) => setTimeout(r, 200))
 
             const load = async ($state) => {
                 try {
@@ -80,7 +80,7 @@
                         setTimeout(() => {
                             posts.value.push(...json)
                             $state.loaded()
-                        }, 1500)
+                        }, 700)
                     } else {
                         $state.complete()
                     }
@@ -107,6 +107,20 @@
         height: 50px;
         -webkit-animation: spin 2s linear infinite;
         animation: spin 2s linear infinite;
+    }
+
+    .wrapper_content {
+        cursor: pointer;
+        background-color: rgba(92, 90, 90, 0.4);
+        outline: 2px solid rgb(195, 193, 193);
+        transition-duration: .4s;
+        color: rgb(230, 230, 230);
+    }
+
+    .wrapper_content:hover {
+        background-color: rgb(255, 255, 255);
+        outline: 2px solid rgb(209, 208, 208);
+        color: rgb(22, 22, 22);
     }
 
     /* Safari */

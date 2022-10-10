@@ -1,34 +1,38 @@
 @extends('app')
 @section('content')
 @push('styles')
-    <link rel="stylesheet" href="{{ asset('/css/userpost-styles.css') }}">
+<link rel="stylesheet" href="{{ asset('/css/userpost-styles.css') }}">
 @endpush
-<div class="w-full h-full bg-gray-50 z-10 overflow-hidden">
-    <div class="bg-img-user-post"
-        alt="https://www.freepik.com/free-vector/sea-landscape-with-stones-water-clouds_7058935.htm#page=2&query=sky&position=44&from_view=search">
-    </div>
+<div class="w-full h-full z-10 overflow-hidden">
     <div class="img-user mt-28 mb-4">
-        <div class="image-container">
-            @if (!is_null($user->photo_profile))
-            <img src="{{ asset('/storage/' . $user->photo_profile) }}"
-                class="img-profile mx-auto w-52 h-52 cursor-pointer rounded-md"
-                alt="{{$user->photo_profile}}">
-            @elseif (!is_null($user->photo_profile_fb))
-            <img src="{{ asset($user->photo_profile_fb) }}"
-                class="img-profile mx-auto w-52 h-52 cursor-pointer rounded-md"
-                alt="{{$user->photo_profile_fb}}">
-            @else
-            <img src="{{ asset('/img/default-profile.webp') }}" alt="https://www.freepik.com/vectors/secret-agent"
-                class="img-profile mx-auto w-52 h-52 cursor-pointer rounded-md">
-            @endif
-        </div>
-        <div class="right-item text-center">
+        <div class="grid-cols-1">
             <div class="flex justify-center">
-                <div class="border-b border-slate-500 w-60">
-                    <p class="name text-gray-700 mt-2 mb-2">{{ $user->name }}</p>
+                <div class="image-container">
+                    @if (!is_null($user->photo_profile))
+                    <img src="{{ asset('/storage/' . $user->photo_profile) }}"
+                        class="img-profile mx-auto w-52 h-52 cursor-pointer rounded-md" alt="{{$user->photo_profile}}">
+                    @elseif (!is_null($user->photo_profile_fb))
+                    <img src="{{ asset($user->photo_profile_fb) }}"
+                        class="img-profile mx-auto w-52 h-52 cursor-pointer rounded-md"
+                        alt="{{$user->photo_profile_fb}}">
+                    @else
+                    <img src="{{ asset('/img/default-profile.webp') }}"
+                        alt="https://www.freepik.com/vectors/secret-agent"
+                        class="img-profile mx-auto w-52 h-52 cursor-pointer rounded-md">
+                    @endif
                 </div>
             </div>
-            <div class="bio text-gray-500 text-sm mt-2">
+        </div>
+        <div class="item-info">
+            <div class="w-full text-center">
+                <div class="name-info">
+                    <p class="name text-gray-50 mt-2 mb-2">{{ $user->name }}</p>
+                </div>
+                <center>
+                    <hr class="border border-slate-400 w-48">
+                </center>
+            </div>
+            <div class="bio text-gray-50 text-sm mt-2 text-center">
                 {!! !is_null($user->bio) ? $user->bio : "Belum ada bio" !!}
             </div>
         </div>
@@ -149,12 +153,12 @@
     </div>
     @endif
     <div class="text-header text-center uppercase font-semibold
-    mb-8 text-4xl text-gray-700 space-y-2">
+    mb-8 text-4xl text-gray-50 space-y-2">
         <p>Post By</p>
         <p>{{ $user->name }}</p>
     </div>
     <div class="flex justify-center">
-        <div class="container grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mx-5 mb-5">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-5">
             @foreach ($userposts as $post)
             <div class="container-box bg-white rounded p-2 shadow-md shadow-gray-400">
                 <div class="title-content text-center text-gray-700">
@@ -168,7 +172,7 @@
             @endforeach
         </div>
     </div>
-    <div class="mb-28">
+    <div class="mb-14 mt-10">
         <div class="paginate">
             {{ $userposts->links() }}
         </div>

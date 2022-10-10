@@ -1,7 +1,7 @@
 @extends('app')
 @section('content')
     <div class="w-full h-screen flex justify-center items-center">
-        <div class="w-2/3 h-auto p-2 pb-4 bg-red-300 outline outline-2 outline-red-500 rounded space-y-6">
+        <div class="lg:w-2/3 w-full lg:mx-0 mx-5 lg:mt-0 mt-12 h-auto p-2 pb-4 bg-red-300 outline outline-2 outline-red-500 rounded space-y-6">
             <div class="image-error">
                 <img src="{{ asset('/img/404-image.webp') }}" class="w-96 h-52 mx-auto" alt="error-404">
             </div>

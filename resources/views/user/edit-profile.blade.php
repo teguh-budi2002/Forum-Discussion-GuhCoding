@@ -1,13 +1,13 @@
 @extends('app')
 @section('content')
-<div class="w-full h-full bg-gray-100 flex justify-center items-center flex-col md:px-0 px-3">
-    <div class="md:w-2/4 w-full p-2 bg-white shadow-md shadow-gray-500 mt-32 mb-16 rounded-lg mx-auto">
+<div class="w-full h-full flex justify-center items-center flex-col md:px-0 px-3">
+    <div class="md:w-3/4 w-full p-2 bg-white shadow-lg shadow-gray-400 mt-32 mb-16 rounded-lg mx-auto">
         <form action="{{ Route('profile.update', ['profile' => $user->name]) }}" method="post"
             enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <div class="flex justify-center">
-                <div class="form space-y-5 mt-3 mb-5">
+                <div class="form w-full space-y-5 mt-3 mb-5">
                     <input type="hidden" name="token">
                     <div class="form-group flex flex-col">
                         <label for="name">Nama</label>

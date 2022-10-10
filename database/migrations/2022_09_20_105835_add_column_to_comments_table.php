@@ -14,7 +14,9 @@ class AddColumnToCommentsTable extends Migration
     public function up()
     {
         Schema::table('comments', function (Blueprint $table) {
-            $table->integer('parent_id')->unsigned()->nullable();
+            $table->foreignId('parent_id')
+                  ->onDelete('cascade')
+                  ->nullable();
         });
     }
 

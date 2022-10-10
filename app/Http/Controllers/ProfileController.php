@@ -89,12 +89,12 @@ class ProfileController extends Controller
             $user->bio = $request->input('bio');
 
         } catch (\Throwable $th) {
-            dd($th->getMessage());
             DB::rollback();
             return redirect()->back()->with('errors', 'Terjadi Kesalahan Silahkan Coba Lagi');
         } finally {
             $user->save();
             DB::commit();
+            notify()->success('Profile Berhasil Di Update', 'UPDATED PROFILE');
             return redirect()->route('profile.index')->with('update', 'Data Berhasil Di Update');
         }
     }

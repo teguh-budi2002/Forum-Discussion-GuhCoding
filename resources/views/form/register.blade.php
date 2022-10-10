@@ -6,7 +6,7 @@
 <div class="w-full h-full flex justify-center">
     <div class="w-full ml-2 px-2 md:w-2/4">
         <div class="horizontal-scroll-wrapper pt-24 pb-10">
-            <div class="text-gray-600 font-xl font-semibold text-center mr-2">
+            <div class="text-white font-xl font-semibold text-center mr-2">
                 <p class="mb-4">Daftarkan diri anda pada forum GuhCoding.com</p>
             </div>
             @if (Session::has('error'))
@@ -18,17 +18,8 @@
                         onclick="this.parentElement.style.display='none';">&times;</span>
                 </div>
             </div>
-            @elseif (Session::has('success'))
-            <div class="session-success mt-2 mr-2">
-                <div
-                    class="bg-green-500 flex items-center justify-between w-full text-center font-semibold text-white p-2 rounded-full">
-                    <span class="ml-3">{{ Session::get('success') }}</span>
-                    <span class="cursor-pointer text-xl mr-3"
-                        onclick="this.parentElement.style.display='none';">&times;</span>
-                </div>
-            </div>
             @endif
-            <div class="mt-7 mb-10 mr-2 bg-gray-50 shadow-md shadow-gray-500 rounded-lg p-4">
+            <div class="mt-7 mb-10 mr-2 bg-gray-50 shadow-md shadow-gray-400 rounded-lg p-4">
                 <form action="{{ Route('send.regis') }}" id="formRegistation" method="post">
                     @csrf
                     <div class="space-y-5" id="form-reg">

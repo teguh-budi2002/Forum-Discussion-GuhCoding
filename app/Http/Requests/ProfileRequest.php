@@ -26,8 +26,8 @@ class ProfileRequest extends FormRequest
         return [
             'name' => 'required',
             'email' => 'required|email:dns',
-            'gender' => 'required',
-            'phone' => 'required',
+            'gender' => 'nullable',
+            'phone' => 'nullable',
             'bio' => 'nullable|max:110'
         ];
     }

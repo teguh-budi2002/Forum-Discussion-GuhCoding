@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Str;
-use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Mail;
 use App\Notifications\ResetPasswordMailNotif;
 
-class ResetPasswordController extends Controller
+class ForgotPasswordController extends Controller
 {
     public function forgotForm () {
         return view('form.forgot');

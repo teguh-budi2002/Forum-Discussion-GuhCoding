@@ -88,8 +88,10 @@
                     <p>Nomor : {{ auth()->user()->phone }}</p>
                     <p>Email : {{ auth()->user()->email }}</p>
                     <p>Gender : {{ auth()->user()->gender }}</p>
+                    <p>Status Account : {{ auth()->user()->isActive ? "ACTIVE" : "NON-AKTIF" }}</p>
+                    <p>Role : {{ auth()->user()->role_user }}</p>
                     <p>Bio :</p>
-                    <div class="w-full min-h-fit border-2 border-violet-600 p-2 rounded-lg shadow-md shadow-violet-500">
+                    <div class="w-full min-h-fit border-2 border-gray-600 p-2 rounded-lg shadow-md shadow-violet-500">
                         <p>{!! auth()->user()->bio ? auth()->user()->bio : 'Bio belum di isi' !!}</p>
                     </div>
                 </div>

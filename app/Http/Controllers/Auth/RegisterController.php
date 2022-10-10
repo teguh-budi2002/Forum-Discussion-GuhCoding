@@ -13,7 +13,7 @@ use Illuminate\Auth\Events\Registered;
 
 class RegisterController extends Controller
 {
-    public function formReg(){
+    public function showRegistrationForm() {
         return view('form.register');
     }
 

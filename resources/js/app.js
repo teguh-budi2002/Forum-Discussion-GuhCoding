@@ -40,7 +40,7 @@ app .use(VueLazyLoad)
         return new Promise((resolve, reject) => {
             setTimeout(() => {
                 resolve(PostComponent)
-            }, 2000);
+            }, 1000);
         })
     }))
     .component('modal-forum', ModalForumComponent)
@@ -49,19 +49,18 @@ app .use(VueLazyLoad)
 
 app .use(VueLazyLoad)
     .component('forum', Forum)
-    .component('live-search', LiveSearch)
     .component('loading-forum-component', ForumLoadingComponent)
     .component('modal-forum', ModalForumComponent)
     .component('infinite-loading', InfiniteLoading)
     .mount("#user-post-in-forum")
 
 app
-    .component('home-main-nav', HomeMain)
+    .component('home-main', HomeMain)
     .component('body-main', defineAsyncComponent(() => {
         return new Promise ((resolve, reject) => {
             setTimeout(() => {
                 resolve(import('./components/home/BodyMain.vue'))
-            }, 2000);
+            }, 1000);
         })
     }))
-    .mount("#home-main-nav")
+    .mount("#home-main")
